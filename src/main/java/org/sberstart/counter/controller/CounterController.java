@@ -17,9 +17,15 @@ public class CounterController {
     this.service = service;
   }
 
+  // todo codes
   @GetMapping("/counters/{id}")
   public Counter getCounterById(@PathVariable Integer id) {
     return service.getCounterById(id);
+  }
+
+  @GetMapping("/counters/sum")
+  public String getAllSum() {
+    return service.getAllSum().toString();
   }
 
   @GetMapping("/hello")
