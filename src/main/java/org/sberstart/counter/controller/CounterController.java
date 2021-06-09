@@ -1,7 +1,7 @@
 package org.sberstart.counter.controller;
 
 import org.sberstart.counter.model.Counter;
-import org.sberstart.counter.service.CounterService;
+import org.sberstart.counter.service.impl.CounterServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CounterController {
 
-  private CounterService service;
+  private CounterServiceImpl service;
 
   @Autowired
-  public CounterController(CounterService service) {
+  public CounterController(CounterServiceImpl service) {
     this.service = service;
   }
 
