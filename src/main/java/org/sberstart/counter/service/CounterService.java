@@ -25,6 +25,6 @@ public class CounterService {
         .stream()
         .map(Counter::getValue)
         .reduce(BigInteger::add)
-        .orElse(BigInteger.valueOf(-1));
+        .orElseThrow();
   }
 }
