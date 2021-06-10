@@ -1,7 +1,10 @@
 package org.sberstart.counter.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import org.sberstart.counter.NoCountersException;
 import org.sberstart.counter.NoSuchCounterIdException;
 import org.sberstart.counter.dao.CounterDao;
@@ -11,26 +14,26 @@ import org.springframework.stereotype.Component;
 @Component
 public class CounterDaoImpl implements CounterDao {
 
-  private final List<Counter> counters;
+  private final Map<Integer, Counter> counters;
 
   private void checkId(Integer id) {
-    if (id > counters.size()) {
+    if (!counters.containsKey(id)) {
       throw new NoSuchCounterIdException(id);
     }
   }
 
   public CounterDaoImpl() {
-    this.counters = new ArrayList<>();
+    this.counters = new LinkedHashMap<>();
   }
 
   public Counter getCounterById(Integer id) {
     checkId(id);
 
-    return counters.get(id - 1);
+    return counters.get(id);
   }
 
   public Counter addCounter(Counter counter) {
-    counters.add(counter);
+    counters.putIfAbsent(counter.getId(), counter);
     return counter;
   }
 
@@ -38,19 +41,19 @@ public class CounterDaoImpl implements CounterDao {
     if (counters.size() == 0) {
       throw new NoCountersException();
     }
-    return counters;
+    return new ArrayList<>(counters.values());
   }
 
   public Counter deleteCounterById(Integer id) {
     checkId(id);
 
-    return counters.remove(id - 1);
+    return counters.remove(id);
   }
 
   public Counter incrementCounterById(Integer id) {
     checkId(id);
 
-    Counter counter = counters.get(id - 1);
+    Counter counter = counters.get(id);
     counter.increment();
     return counter;
   }
