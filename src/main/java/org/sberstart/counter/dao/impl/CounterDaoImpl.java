@@ -18,6 +18,9 @@ public class CounterDaoImpl implements CounterDao {
 
   private void checkId(Integer id) {
     if (!counters.containsKey(id)) {
+      if (id < 1) {
+        throw new IndexOutOfBoundsException("Bad Id value: " + id);
+      }
       throw new NoSuchCounterIdException(id);
     }
   }

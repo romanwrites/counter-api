@@ -31,8 +31,14 @@ public class ControllerAdvisor {
   @ExceptionHandler(value = {NumberFormatException.class, IndexOutOfBoundsException.class})
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ResponseBody
-  public Map<String, String> handleBadRequestById() {
-    return createErrorResponse(HttpStatus.BAD_REQUEST, "Bad Id provided");
+  public Map<String, String> handleBadRequestById(Exception e) {
+    String message;
+    if (e instanceof IndexOutOfBoundsException) {
+      message = e.getMessage();
+    } else {
+      message = "Bad Id provided";
+    }
+    return createErrorResponse(HttpStatus.BAD_REQUEST, message);
   }
 
   @ExceptionHandler(value = NoSuchCounterIdException.class)
