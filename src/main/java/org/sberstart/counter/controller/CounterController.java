@@ -47,16 +47,16 @@ public class CounterController {
     return service.addNewCounter();
   }
 
+  @PutMapping("/counters/increment/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public Counter incrementCounterById(@PathVariable Integer id) {
+    return service.incrementCounterById(id);
+  }
+
   @DeleteMapping("/counters/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public String deleteCounterById(@PathVariable Integer id) {
     service.deleteCounterById(id);
     return "Successfully deleted";
-  }
-
-  @PutMapping("/counters/increment/{id}")
-  @ResponseStatus(HttpStatus.OK)
-  public Counter incrementCounterById(@PathVariable Integer id) {
-    return service.incrementCounterById(id);
   }
 }

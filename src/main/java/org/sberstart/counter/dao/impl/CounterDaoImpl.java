@@ -15,6 +15,7 @@ public class CounterDaoImpl implements CounterDao {
 
   private final Map<Integer, Counter> counters;
 
+  //todo to service
   private void checkId(Integer id) {
     if (!counters.containsKey(id)) {
       if (id < 1) {
