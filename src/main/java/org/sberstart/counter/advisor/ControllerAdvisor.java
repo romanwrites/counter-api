@@ -21,14 +21,13 @@ public class ControllerAdvisor {
   private Map<String, String> createErrorResponse(HttpStatus status, String message) {
     Map<String, String> response = new LinkedHashMap<>();
 
-    response.put("timestamp", LocalDateTime.now().format(DateTimeFormatter.ofPattern(DATE_PATTERN)));
     response.put("status", String.valueOf(status.value()));
+    response.put("timestamp", LocalDateTime.now().format(DateTimeFormatter.ofPattern(DATE_PATTERN)));
     response.put("message", message);
 
     return response;
   }
 
-  // todo create custom exception to handle more precisely
   @ExceptionHandler(value = {NumberFormatException.class, IndexOutOfBoundsException.class})
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ResponseBody
@@ -49,5 +48,4 @@ public class ControllerAdvisor {
   public Map<String, String> handleNoCountersException(NoCountersException e) {
     return createErrorResponse(HttpStatus.NOT_FOUND, e.getMessage());
   }
-
 }
