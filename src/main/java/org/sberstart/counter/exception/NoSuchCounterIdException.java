@@ -1,4 +1,4 @@
-package org.sberstart.counter;
+package org.sberstart.counter.exception;
 
 public class NoSuchCounterIdException extends RuntimeException {
 

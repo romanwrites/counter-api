@@ -1,12 +1,11 @@
 package org.sberstart.counter.dao.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import org.sberstart.counter.NoCountersException;
-import org.sberstart.counter.NoSuchCounterIdException;
+import org.sberstart.counter.exception.NoCountersException;
+import org.sberstart.counter.exception.NoSuchCounterIdException;
 import org.sberstart.counter.dao.CounterDao;
 import org.sberstart.counter.model.Counter;
 import org.springframework.stereotype.Component;

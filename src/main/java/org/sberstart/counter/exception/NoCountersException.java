@@ -1,4 +1,4 @@
-package org.sberstart.counter;
+package org.sberstart.counter.exception;
 
 public class NoCountersException extends RuntimeException {
 
