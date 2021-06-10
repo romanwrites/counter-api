@@ -1,6 +1,7 @@
 package org.sberstart.counter.model;
 
 import java.math.BigInteger;
+import java.util.Objects;
 
 public class Counter {
 
@@ -23,5 +24,30 @@ public class Counter {
   public BigInteger increment() {
     value = value.add(BigInteger.ONE);
     return value;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Counter counter = (Counter) o;
+    return id.equals(counter.id) && value.equals(counter.value);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, value);
+  }
+
+  @Override
+  public String toString() {
+    return "Counter{" +
+        "id=" + id +
+        ", value=" + value +
+        '}';
   }
 }
