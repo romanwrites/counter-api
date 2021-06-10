@@ -37,17 +37,17 @@ public class ControllerAdvisor {
   }
 
   @ExceptionHandler(value = NoSuchCounterIdException.class)
-  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
   @ResponseBody
-  public Map<String, String> handleNoSuchCounterByIdException() {
-    return createErrorResponse(HttpStatus.NOT_FOUND, "no such element exception");
+  public Map<String, String> handleNoSuchCounterByIdException(NoSuchCounterIdException e) {
+    return createErrorResponse(HttpStatus.NOT_FOUND, e.getMessage());
   }
 
   @ExceptionHandler(value = NoCountersException.class)
-  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
   @ResponseBody
-  public Map<String, String> handleNoCountersException() {
-    return createErrorResponse(HttpStatus.NOT_FOUND, "no such element exception");
+  public Map<String, String> handleNoCountersException(NoCountersException e) {
+    return createErrorResponse(HttpStatus.NOT_FOUND, e.getMessage());
   }
 
 }

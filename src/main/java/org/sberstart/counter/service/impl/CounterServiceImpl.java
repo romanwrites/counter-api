@@ -1,6 +1,7 @@
 package org.sberstart.counter.service.impl;
 
 import java.math.BigInteger;
+import java.util.List;
 import org.sberstart.counter.dao.CounterDao;
 import org.sberstart.counter.model.Counter;
 import org.sberstart.counter.service.CounterService;
@@ -16,6 +17,7 @@ public class CounterServiceImpl implements CounterService {
   @Autowired
   public CounterServiceImpl(CounterDao dao) {
     this.dao = dao;
+    this.counterId = 0;
   }
 
   public Counter getCounterById(Integer id) {
@@ -40,5 +42,9 @@ public class CounterServiceImpl implements CounterService {
 
   public Counter incrementCounterById(Integer id) {
     return dao.incrementCounterById(id);
+  }
+
+  public List<Counter> getAllCounters() {
+    return dao.getAllCounters();
   }
 }

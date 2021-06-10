@@ -1,5 +1,6 @@
 package org.sberstart.counter.controller;
 
+import java.util.List;
 import org.sberstart.counter.model.Counter;
 import org.sberstart.counter.service.impl.CounterServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,12 @@ public class CounterController {
   @ResponseStatus(HttpStatus.OK)
   public Counter getCounterById(@PathVariable Integer id) {
     return service.getCounterById(id);
+  }
+
+  @GetMapping("/counters")
+  @ResponseStatus(HttpStatus.OK)
+  public List<Counter> getallCounters() {
+    return service.getAllCounters();
   }
 
   @GetMapping("/counters/sum")
