@@ -7,23 +7,10 @@ docker build -t counters-api .
 docker run -p 8080:8080 counters-api
 ```
 
-## API
-```
-Get counter by id
-GET /counters/{id}
+## API documentation
 
-Get all counters
-GET /counters/{id}
+### [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
-Get sum of all counters values
-GET /counters/{id}
+<img src="img/swagger.png", alt="swagger api documentation" />
 
-Add new counter
-POST /counters
-
-Increment counter value by id
-PUT /counters/increment/{id}
-
-Remove counter by id
-DELETE /counters/{id}
-```
+Author: Roman Kukin
