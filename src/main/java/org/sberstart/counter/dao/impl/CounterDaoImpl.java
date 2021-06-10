@@ -47,11 +47,11 @@ public class CounterDaoImpl implements CounterDao {
     return counters.remove(id - 1);
   }
 
-//  public Counter incrementCounterById(Integer id) {
-//    checkId(id);
-//
-//    Counter counter = counters.get(id - 1);
-//    counter.increment();
-//    return counter;
-//  }
+  public Counter incrementCounterById(Integer id) {
+    checkId(id);
+
+    Counter counter = counters.get(id - 1);
+    counter.increment();
+    return counter;
+  }
 }
