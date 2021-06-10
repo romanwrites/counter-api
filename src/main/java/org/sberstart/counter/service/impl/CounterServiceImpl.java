@@ -2,6 +2,7 @@ package org.sberstart.counter.service.impl;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.sberstart.counter.dao.CounterDao;
 import org.sberstart.counter.model.Counter;
 import org.sberstart.counter.service.CounterService;
@@ -46,5 +47,9 @@ public class CounterServiceImpl implements CounterService {
 
   public List<Counter> getAllCounters() {
     return dao.getAllCounters();
+  }
+
+  public List<Integer> getAllCountersNames() {
+    return dao.getAllCounters().stream().map(a -> a.getId()).collect(Collectors.toList());
   }
 }

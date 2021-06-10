@@ -31,8 +31,14 @@ public class CounterController {
 
   @GetMapping("/counters")
   @ResponseStatus(HttpStatus.OK)
-  public List<Counter> getallCounters() {
+  public List<Counter> getAllCounters() {
     return service.getAllCounters();
+  }
+
+  @GetMapping("/counters/names")
+  @ResponseStatus(HttpStatus.OK)
+  public List<Integer> getAllCountersNames() {
+    return service.getAllCountersNames();
   }
 
   @GetMapping("/counters/sum")

@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.sberstart.counter.controller.CounterController;
 import org.sberstart.counter.model.Counter;
@@ -69,6 +70,28 @@ class CounterControllerTest {
 
     assertEquals(expectedCounters, counters);
     verify(service).getAllCounters();
+  }
+
+  @Test
+  void getAllCountersNames() throws Exception {
+    List<Counter> expectedCounters = new ArrayList<>();
+    for (int i = 1; i <= 5; i++) {
+      expectedCounters.add(new Counter(i));
+    }
+
+    List<Integer> expectedAllNames = expectedCounters.stream().map(Counter::getId)
+        .collect(Collectors.toList());
+
+    when(service.getAllCountersNames()).thenReturn(expectedAllNames);
+
+    MvcResult result = this.mockMvc.perform(get("/counters/names")).andDo(print())
+        .andExpect(status().isOk()).andReturn();
+
+    List<Integer> allNames = objectMapper
+        .readValue(result.getResponse().getContentAsString(), new TypeReference<List<Integer>>(){});
+
+    assertEquals(expectedAllNames, allNames);
+    verify(service).getAllCountersNames();
   }
 
   @Test

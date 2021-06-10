@@ -7,6 +7,7 @@ public class Counter {
 
   private final Integer id;
   private BigInteger value;
+  private String name;
 
   public Counter(Integer id) {
     this.id = id;
