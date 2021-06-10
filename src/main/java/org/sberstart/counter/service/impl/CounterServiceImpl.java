@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class CounterServiceImpl implements CounterService {
 
   private final CounterDao dao;
+  private Integer counterId;
 
   @Autowired
   public CounterServiceImpl(CounterDao dao) {
@@ -27,5 +28,17 @@ public class CounterServiceImpl implements CounterService {
         .map(Counter::getValue)
         .reduce(BigInteger::add)
         .orElseThrow();
+  }
+
+  public Counter addNewCounter() {
+    return dao.addCounter(new Counter(++counterId));
+  }
+
+  public Counter deleteCounterById(Integer id) {
+    return dao.deleteCounterById(id);
+  }
+
+  public Counter incrementCounterById(Integer id) {
+    return dao.incrementCounterById(id);
   }
 }

@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import org.sberstart.counter.NoCountersException;
+import org.sberstart.counter.NoSuchCounterIdException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -31,14 +33,21 @@ public class ControllerAdvisor {
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ResponseBody
   public Map<String, String> handleBadRequestById() {
-    return createErrorResponse(HttpStatus.BAD_REQUEST, "id must be more than zero");
+    return createErrorResponse(HttpStatus.BAD_REQUEST, "Bad Id provided");
   }
 
-  @ExceptionHandler(value = NoSuchElementException.class)
+  @ExceptionHandler(value = NoSuchCounterIdException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ResponseBody
-  public Map<String, String> handleNoSuchElementByIdException() {
-    return createErrorResponse(HttpStatus.BAD_REQUEST, "no such element exception");
+  public Map<String, String> handleNoSuchCounterByIdException() {
+    return createErrorResponse(HttpStatus.NOT_FOUND, "no such element exception");
+  }
+
+  @ExceptionHandler(value = NoCountersException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  @ResponseBody
+  public Map<String, String> handleNoCountersException() {
+    return createErrorResponse(HttpStatus.NOT_FOUND, "no such element exception");
   }
 
 }
