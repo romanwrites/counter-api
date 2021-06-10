@@ -43,7 +43,7 @@ public class CounterController {
 
   @PostMapping("/counters")
   @ResponseStatus(HttpStatus.CREATED)
-  public Counter addCounter() {
+  public Counter addNewCounter() {
     return service.addNewCounter();
   }
 

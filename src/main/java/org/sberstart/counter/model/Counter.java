@@ -13,6 +13,11 @@ public class Counter {
     this.value = BigInteger.ZERO;
   }
 
+  public Counter(Integer id, BigInteger value) {
+    this.id = id;
+    this.value = value;
+  }
+
   public Integer getId() {
     return id;
   }
@@ -24,6 +29,10 @@ public class Counter {
   public BigInteger increment() {
     value = value.add(BigInteger.ONE);
     return value;
+  }
+
+  public void setValue(BigInteger value) {
+    this.value = value;
   }
 
   @Override
