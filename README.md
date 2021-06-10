@@ -11,6 +11,6 @@ docker run -p 8080:8080 counters-api
 
 ### [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
-<img src="img/swagger.png", alt="swagger api documentation" />
+<img src="img/swagger.png" alt="swagger api documentation" />
 
 Author: Roman Kukin
