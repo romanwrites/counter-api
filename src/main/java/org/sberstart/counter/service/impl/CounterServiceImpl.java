@@ -50,6 +50,9 @@ public class CounterServiceImpl implements CounterService {
   }
 
   public List<Integer> getAllCountersNames() {
-    return dao.getAllCounters().stream().map(a -> a.getId()).collect(Collectors.toList());
+    return dao.getAllCounters()
+        .stream()
+        .map(Counter::getId)
+        .collect(Collectors.toList());
   }
 }

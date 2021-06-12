@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import org.sberstart.counter.exception.NoCountersException;
 import org.sberstart.counter.exception.NoSuchCounterIdException;
 import org.sberstart.counter.dao.CounterDao;
@@ -25,7 +26,7 @@ public class CounterDaoImpl implements CounterDao {
   }
 
   public CounterDaoImpl() {
-    this.counters = new LinkedHashMap<>();
+    this.counters = new ConcurrentHashMap<>();
   }
 
   public Counter getCounterById(Integer id) {
