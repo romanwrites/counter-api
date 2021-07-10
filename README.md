@@ -8,6 +8,7 @@ docker run -p 8080:8080 counters-api
 ```
 
 ## API documentation
+[![Ubuntu](https://github.com/kukinpower/counter-api/actions/workflows/maven.yml/badge.svg)](https://github.com/kukinpower/counter-api/actions/workflows/maven.yml)
 
 ### [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
