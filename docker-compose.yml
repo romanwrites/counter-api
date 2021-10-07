@@ -1,0 +1,8 @@
+version: "3"
+services:
+  backend:
+    build: ./
+    image: "counters"
+    container_name: "counters-api"
+    ports:
+      - "8080:8080"
